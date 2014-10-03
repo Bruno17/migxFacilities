@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model package="migxfacilities" baseClass="xPDOObject" platform="mysql" defaultEngine="MyISAM" version="1.0.0">
+    <!-- extend the modResource class -->
+    <object class="facilityResource" extends="modResource">
+        <composite alias="Facility" local="id" class="mfFacility" foreign="resource_id" cardinality="one" owner="local"/>
+    </object>
+    <object class="mfFacility" table="mf_facilities" extends="xPDOSimpleObject">
+        <field key="resource_id" dbtype="int" precision="11" phptype="integer" null="false" attributes="unsigned" index="index"/>
+        <field key="facility_type" dbtype="varchar" precision="50" phptype="string" null="true" />
+        <field key="address" dbtype="text" phptype="string" null="true" />
+
+        <aggregate alias="Resource" class="modResource" local="resource_id" foreign="id" cardinality="one" owner="foreign"/>
+        <composite alias="TennisCourt" class="mfTennisCourt" local="id" foreign="facility_id" cardinality="one" owner="local" />
+        <composite alias="SwimmingPool" class="mfSwimmingPool" local="id" foreign="facility_id" cardinality="one" owner="local" /> 
+    </object>
+  
+<object class="mfTennisCourt" table="mf_tennis_courts" extends="xPDOSimpleObject">
+    <field key="facility_id" dbtype="int" precision="11" phptype="integer" null="false" attributes="unsigned" index="index"/>
+    <field key="number_of_courts" dbtype="tinyint" precision="3" attributes="unsigned" phptype="integer" null="true" />
+    <field key="surface_type" dbtype="varchar" precision="100" phptype="string" null="true" />
+
+    <aggregate alias="Facility" class="mfFacility" local="facility_id" foreign="id" cardinality="one" owner="foreign" />
+</object>
+ 
+ 
+<object class="mfSwimmingPool" table="mf_swimming_pools" extends="xPDOSimpleObject">
+    <field key="facility_id" dbtype="int" precision="11" phptype="integer" null="false" attributes="unsigned" index="index"/>
+    <field key="pool_length" dbtype="tinyint" precision="4" attributes="unsigned" phptype="integer" null="true" />
+    <field key="indoor_pool" dbtype="int" precision="1" attributes="unsigned" phptype="integer" null="false" default="0" />
+
+    <aggregate alias="Facility" class="mfFacility" local="facility_id" foreign="id" cardinality="one" owner="foreign" />
+</object>    
+    
+</model>

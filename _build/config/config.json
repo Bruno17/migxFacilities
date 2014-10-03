@@ -1,0 +1,8 @@
+{
+  "id":2,
+  "package":"migxFacilities",
+  "packageDescription":"",
+  "version":"0.1.0",
+  "release":"alpha",
+  "menus":"[{\"MIGX_id\":\"1\",\"text\":\"Facilities\",\"parent\":\"\",\"description\":\"\",\"icon\":\"\",\"menuindex\":\"\",\"params\":\"&configs=mf_facilities\",\"handler\":\"\",\"permissions\":\"\",\"action.id\":\"\",\"action.namespace\":\"\",\"action.controller\":\"\",\"action.haslayout\":\"0\",\"action.lang_topics\":\"\",\"action.assets\":\"\"}]"
+}
